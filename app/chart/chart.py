@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Đường dẫn dữ liệu
-DATA_PATH = r"C:\Users\ngokh\Documents\BTL T4\database\market_data_6mo.csv"
+DATA_PATH = r"app/database/market_data_6mo.csv"
 
 # Hàm chung để vẽ biểu đồ (nền trong suốt + chi tiết màu #CC9933)
 def plot_minimal(df, column, title, ylabel=""):
@@ -53,4 +53,5 @@ def Chi_so_bien_dong():
 def Ty_gia():
     df = pd.read_csv(DATA_PATH, parse_dates=["Date"])
     df.set_index("Date", inplace=True)
+
     return plot_minimal(df, "Ty_gia_USD_VND", "Tỷ giá USD/VND", "USD/VND")
