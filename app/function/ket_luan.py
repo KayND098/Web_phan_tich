@@ -25,16 +25,16 @@ def phan_tich_tuong_quan(data_path=DATA_PATH):
     corr = df.corr(numeric_only=True)
 
     # Tiêu đề chính màu trắng
-    st.markdown("<h1 style='color:white'>📊 Dashboard phân tích tương quan thị trường vàng</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='color:white'> Dashboard phân tích tương quan thị trường vàng</h1>", unsafe_allow_html=True)
 
     # Heatmap tương quan
-    st.markdown("<h2 style='color:white'>🔎 Ma trận tương quan</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='color:white'> Ma trận tương quan</h2>", unsafe_allow_html=True)
     fig_corr = px.imshow(corr, text_auto=True, color_continuous_scale="RdBu_r")
     fig_corr.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(240,240,240,0.3)")
     st.plotly_chart(fig_corr, use_container_width=True)
 
     # Biểu đồ đường
-    st.markdown("<h2 style='color:white'>📉 Diễn biến giá vàng và số người mua</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='color:white'> Diễn biến giá vàng và số người mua</h2>", unsafe_allow_html=True)
     fig_line = px.line(df.reset_index(), x="Date", y=["Gia_vang", "So_nguoi_mua"],
                        labels={"value": "Giá trị", "Date": "Ngày"},
                        title="Giá vàng vs Người mua theo thời gian")
@@ -42,21 +42,21 @@ def phan_tich_tuong_quan(data_path=DATA_PATH):
     st.plotly_chart(fig_line, use_container_width=True)
 
     # Biểu đồ cột
-    st.markdown("<h2 style='color:white'>📊 So sánh số người mua/bán</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='color:white'> So sánh số người mua/bán</h2>", unsafe_allow_html=True)
     fig_bar = px.bar(df.reset_index(), x="Date", y=["So_nguoi_mua", "So_nguoi_ban"],
                      barmode="group", title="Người mua vs Người bán")
     fig_bar.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(240,240,240,0.3)")
     st.plotly_chart(fig_bar, use_container_width=True)
 
     # Scatter plot
-    st.markdown("<h2 style='color:white'>🔗 Quan hệ giữa giá vàng và số người mua</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='color:white'> Quan hệ giữa giá vàng và số người mua</h2>", unsafe_allow_html=True)
     fig_scatter = px.scatter(df, x="Gia_vang", y="So_nguoi_mua",
                              trendline="ols", title="Tương quan Giá vàng - Người mua")
     fig_scatter.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(240,240,240,0.3)")
     st.plotly_chart(fig_scatter, use_container_width=True)
 
     # Kết luận
-    st.markdown("<h2 style='color:white'>📌 Kết luận phân tích</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='color:white'> Kết luận phân tích</h2>", unsafe_allow_html=True)
     try:
         if corr.at["Gia_vang", "So_nguoi_mua"] < -0.5:
             st.markdown("<span style='color:white'>* Người mua vàng có xu hướng tăng khi giá vàng giảm (mua tích trữ).</span>", unsafe_allow_html=True)
@@ -70,3 +70,4 @@ def phan_tich_tuong_quan(data_path=DATA_PATH):
         st.error(f"Không tìm thấy cột trong ma trận tương quan: {e}")
 
     return corr
+
