@@ -34,17 +34,18 @@ def phan_tich_tuong_quan(data_path=DATA_PATH):
     st.subheader("|| Phân tích bổ sung hành vi người mua vàng")
     st.subheader("|| Phân tích bổ sung hành vi người mua vàng")
 
-    if corr.at["Gia_vang", "So_nguoi_mua"] < -0.5:
-        st.markdown("<span style='color:white'>* Người mua vàng có xu hướng tăng khi giá vàng giảm (mua tích trữ).</span>", unsafe_allow_html=True)
+    # if corr.at["Gia_vang", "So_nguoi_mua"] < -0.5:
+    #     st.markdown("<span style='color:white'>* Người mua vàng có xu hướng tăng khi giá vàng giảm (mua tích trữ).</span>", unsafe_allow_html=True)
 
-    if corr.at["Chi_so_bien_dong", "So_nguoi_mua"] > 0.5:
-        st.markdown("<span style='color:white'>* Người mua vàng tăng khi thị trường biến động mạnh (tìm nơi trú ẩn an toàn).</span>", unsafe_allow_html=True)
+    # if corr.at["Chi_so_bien_dong", "So_nguoi_mua"] > 0.5:
+    #     st.markdown("<span style='color:white'>* Người mua vàng tăng khi thị trường biến động mạnh (tìm nơi trú ẩn an toàn).</span>", unsafe_allow_html=True)
 
-    if corr.at["Lai_suat_%", "So_nguoi_mua"] < -0.5:
-        st.markdown("<span style='color:white'>* Người mua vàng giảm khi lãi suất cao (ưu tiên gửi tiết kiệm).</span>", unsafe_allow_html=True)
+    # if corr.at["Lai_suat_%", "So_nguoi_mua"] < -0.5:
+    #     st.markdown("<span style='color:white'>* Người mua vàng giảm khi lãi suất cao (ưu tiên gửi tiết kiệm).</span>", unsafe_allow_html=True)
 
-    if (corr.at["Ty_gia_USD_VND", "Gia_vang"] > 0.5) and (corr.at["Gia_vang", "So_nguoi_mua"] < -0.5):
-        st.markdown("<span style='color:white'>* USD tăng làm giá vàng trong nước tăng, dẫn đến người mua vàng giảm.</span>", unsafe_allow_html=True)
+    # if (corr.at["Ty_gia_USD_VND", "Gia_vang"] > 0.5) and (corr.at["Gia_vang", "So_nguoi_mua"] < -0.5):
+    #     st.markdown("<span style='color:white'>* USD tăng làm giá vàng trong nước tăng, dẫn đến người mua vàng giảm.</span>", unsafe_allow_html=True)
 
-    return corr
+    # return corr
+
 
