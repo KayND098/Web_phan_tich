@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 
-DATA_PATH = r"C:\Users\ngokh\Documents\BTL T4\database\market_data_6mo.csv"
+DATA_PATH = r"app/database/market_data_6mo.csv"
 
 def phan_tich_tuong_quan(data_path=DATA_PATH):
     # Đọc dữ liệu
@@ -40,5 +40,6 @@ def phan_tich_tuong_quan(data_path=DATA_PATH):
         st.markdown("<span style='color:white'>* Người mua vàng giảm khi lãi suất cao (ưu tiên gửi tiết kiệm).</span>", unsafe_allow_html=True)
     if corr.loc["Ty_gia_USD_VND", "Gia_vang"] > 0.5 and corr.loc["Gia_vang", "So_nguoi_mua"] < -0.5:
         st.markdown("<span style='color:white'>* USD tăng làm giá vàng trong nước tăng, dẫn đến người mua vàng giảm.</span>", unsafe_allow_html=True)
+
 
     return corr
