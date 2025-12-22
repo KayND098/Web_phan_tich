@@ -13,7 +13,7 @@ def get_base64_of_bin_file(bin_file):
         data = f.read()
     return base64.b64encode(data).decode()
 
-img_path = r"C:\Users\ngokh\Documents\BTL T4\web.jpg"
+img_path = r"app/web.jpg"
 if os.path.exists(img_path):
     img_base64 = get_base64_of_bin_file(img_path)
     page_bg = f"""
@@ -99,4 +99,5 @@ else:
 
     with st.sidebar:
         if st.button(" Đăng xuất", use_container_width=True):
+
             st.info(account.logout())
