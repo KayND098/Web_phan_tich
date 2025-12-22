@@ -83,7 +83,7 @@ if account.current_user is None:
 else:
     # Nếu đã đăng nhập
     try:
-        data = pd.read_csv(r'C:\Users\ngokh\Documents\BTL T4\database\acc.csv')
+        data = pd.read_csv(r'app/database')
         # Lấy đúng dòng của user hiện tại
         user_row = data.loc[data['username'] == account.current_user]
         if not user_row.empty:
@@ -101,3 +101,4 @@ else:
         if st.button(" Đăng xuất", use_container_width=True):
 
             st.info(account.logout())
+
