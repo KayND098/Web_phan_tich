@@ -69,6 +69,8 @@ def phan_tich_tuong_quan(data_path=DATA_PATH):
             st.markdown("* USD tăng làm giá vàng trong nước tăng, dẫn đến người mua vàng giảm.")
     except KeyError as e:
         st.error(f"Không tìm thấy cột trong ma trận tương quan: {e}")
+    return 0
 
   
+
 
