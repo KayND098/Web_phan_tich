@@ -1,26 +1,30 @@
 import csv
 import os
 
+# Biến toàn cục
 users = {}
 current_user = None
 DB_PATH = os.path.join("database", "acc.csv")
 
 def load_users():
+    """Đọc dữ liệu từ file CSV vào dictionary users"""
     global users
+    users.clear()
     if os.path.exists(DB_PATH):
         with open(DB_PATH, mode="r", encoding="utf-8") as f:
-            reader = csv.DictReader(f)   
+            reader = csv.DictReader(f)
             for row in reader:
                 username = row["username"]
                 users[username] = {
                     "email": row["email"],
                     "phone": row["phone"],
-                    "is_paid": row["is_paid"] == "Yes",
+                    "is_paid": row["is_paid"].strip().lower() == "yes",
                     "password": row["password"],
                     "logged_in": False
                 }
 
 def save_to_csv(email, username, phone, is_paid, password):
+    """Lưu thêm một user mới vào file CSV"""
     os.makedirs("database", exist_ok=True)
     file_exists = os.path.exists(DB_PATH)
 
@@ -41,9 +45,10 @@ def save_to_csv(email, username, phone, is_paid, password):
         })
 
 def register(email, phone, is_paid=False, password="", username=""):
+    """Đăng ký tài khoản mới"""
     global users
     if username in users:
-        return " Tên đăng nhập đã tồn tại!"
+        return "Tên đăng nhập đã tồn tại!"
     users[username] = {
         "email": email,
         "phone": phone,
@@ -52,25 +57,28 @@ def register(email, phone, is_paid=False, password="", username=""):
         "logged_in": False
     }
     save_to_csv(email, username, phone, is_paid, password)
-    return f" Đăng ký thành công cho {username}, trả phí: {is_paid}"
+    return f"Đăng ký thành công cho {username}, trả phí: {is_paid}"
 
 def login(username, password):
+    """Đăng nhập"""
     global users, current_user
     if username not in users:
-        return " Tên đăng nhập chưa được đăng ký!"
+        return "Tên đăng nhập chưa được đăng ký!"
     if users[username]["password"] != password:
-        return " Mật khẩu không chính xác!"
+        return "Mật khẩu không chính xác!"
     users[username]["logged_in"] = True
     current_user = username
-    return f" {username} đã đăng nhập thành công!"
+    return f"{username} đã đăng nhập thành công!"
 
 def logout():
+    """Đăng xuất"""
     global users, current_user
     if current_user is None:
-        return " Không có ai đang đăng nhập!"
+        return "Không có ai đang đăng nhập!"
     users[current_user]["logged_in"] = False
-    msg = f" {current_user} đã đăng xuất!"
+    msg = f"{current_user} đã đăng xuất!"
     current_user = None
     return msg
 
+# Tải dữ liệu khi import module
 load_users()
