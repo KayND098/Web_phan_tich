@@ -69,5 +69,6 @@ def phan_tich_tuong_quan(data_path=DATA_PATH):
     except KeyError as e:
         st.error(f"Không tìm thấy cột trong ma trận tương quan: {e}")
 
-    return corr
+    # return corr
+
 
