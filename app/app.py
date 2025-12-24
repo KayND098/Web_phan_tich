@@ -7,26 +7,6 @@ from chart.chart import Gia_vang, Gia_dau, Gia_vang_tg, Chi_so_bien_dong, Ty_gia
 
 st.set_page_config(layout="wide")
 
-# --- Hàm đọc ảnh nền ---
-def get_base64_of_bin_file(bin_file):
-    with open(bin_file, 'rb') as f:
-        data = f.read()
-    return base64.b64encode(data).decode()
-
-img_path = r"app/web.jpg"
-if os.path.exists(img_path):
-    img_base64 = get_base64_of_bin_file(img_path)
-    page_bg = f"""
-    <style>
-    [data-testid="stAppViewContainer"] {{
-        background-image: url("data:image/jpg;base64,{img_base64}");
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-    }}
-    </style>
-    """
-    st.markdown(page_bg, unsafe_allow_html=True)
 
 # --- CSS cho button ---
 button_style = """
@@ -101,6 +81,7 @@ else:
         if st.button(" Đăng xuất", use_container_width=True):
 
             st.info(account.logout())
+
 
 
 
