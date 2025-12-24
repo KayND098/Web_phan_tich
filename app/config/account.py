@@ -4,7 +4,8 @@ import os
 # Biến toàn cục
 users = {}
 current_user = None
-DB_PATH = os.path.join("database", "acc.csv")
+DB_PATH = r"database/app.csv"
+
 
 def load_users():
     """Đọc dữ liệu từ file CSV vào dictionary users"""
@@ -82,3 +83,4 @@ def logout():
 
 # Tải dữ liệu khi import module
 load_users()
+
